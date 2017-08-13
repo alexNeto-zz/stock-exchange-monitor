@@ -1,0 +1,22 @@
+header{
+  width: 100%;
+  height: 75px;
+  background-color: #515751;
+  border-bottom-style: solid;
+  border-bottom-color: #c2c1a5;
+  position: fixed;
+}
+#github{
+  padding-right: 75px;
+  padding-top: 20px;
+  float: right;
+}
+#content{
+  padding-top: 75px;
+}
+#logo{
+  float: left;
+	color: #f5f9e9;
+  padding-left: 75px;
+  font-family: Muli;
+}
