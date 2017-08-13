@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+
 
 @Component({
   selector: 'app-graph',
@@ -66,6 +67,8 @@ public chartHovered(e:any):void {
   console.log(e);
 }
 }
+
+
 /*
 export class GraphComponent implements OnInit {
 
