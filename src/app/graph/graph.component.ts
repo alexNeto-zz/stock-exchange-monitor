@@ -20,7 +20,11 @@ export class GraphComponent{
    {id: "GBP", name: "Great Britain Pound"}
   ];
   selectedValue = null;
+<<<<<<< HEAD
   private apiUrl = 'http://api.fixer.io/latest?base='+ (this.selectedValue !== null) ? this.selectedValue : 'USD';
+=======
+
+>>>>>>> b1d4242b697547dcb4c61b25f2769ea51063c0e8
   constructor(private http: Http){
     console.log('ipsum lorem dolor sit amet');
     this.getContract();
