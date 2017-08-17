@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-graph',
@@ -10,9 +12,15 @@ import 'rxjs/add/operator/map';
 
 export class GraphComponent{
 
-  private apiUrl = 'http://api.fixer.io/latest';
   data: any = {};
-
+  base = [
+   {id: "EUR", name: "Euro"},
+   {id: "USD", name: "US Dollar"},
+   {id: "BRL", name: "Brazil Real"},
+   {id: "GBP", name: "Great Britain Pound"}
+  ];
+  selectedValue = null;
+  private apiUrl = 'http://api.fixer.io/latest?base='+ (this.selectedValue !== null) ? this.selectedValue : 'USD';
   constructor(private http: Http){
     console.log('ipsum lorem dolor sit amet');
     this.getContract();
@@ -30,7 +38,7 @@ export class GraphComponent{
       this.data = data
     })
   }
-  
+
   // lineChart
   public lineChartData:Array<any> = [
     {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
