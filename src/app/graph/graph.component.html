@@ -1,10 +1,8 @@
 <div id="generic">
-  <select name="BASE">
-    <option value="EUR">Euro</option>
-    <option value="USD">US Dollar</option>
-    <option value="BRL">Brazil Real</option>
-    <option value="GBP">Great Britain Pound</option>
-  </select>
+  <select [(ngModel)]="selectedValue">
+      <option *ngFor="let c of base" [value]="c.id">{{c.name}}</option>
+</select>
+{{selectedValue}}
 </div>
 <div class="row">
   <div class="col-md-6">
