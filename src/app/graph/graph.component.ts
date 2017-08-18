@@ -19,35 +19,43 @@ export class GraphComponent{
    {id: "BRL", name: "Brazil Real"},
    {id: "GBP", name: "Great Britain Pound"}
   ];
+<<<<<<< HEAD
   selectedValue = null;
   private apiUrl = 'http://api.fixer.io/latest?base='+ (this.selectedValue !== null) ? this.selectedValue : 'USD';
 
 
+=======
+  selectedValue = 'USD';
+  date = new Date();
+  day = (this.date.getDate() < 10) ? '0' + this.date.getDate() : this.date.getDate();
+  month = (this.date.getMonth() < 10) ? '0' + (this.date.getMonth() + 1) : (this.date.getMonth() + 1);
+  // https://api.fixer.io/2017-08-09?base=USD
+  private apiUrl = 'https://api.fixer.io/' + this.date.getFullYear() + '-' + this.month + '-' + this.day + '?base=' + this.selectedValue;
+  changeBase(selectedValue){
+    this.apiUrl = 'https://api.fixer.io/' + this.date.getFullYear() + '-' + this.month + '-' + this.day + '?base=' + this.selectedValue;
+  }
+>>>>>>> working
   constructor(private http: Http){
-    console.log('ipsum lorem dolor sit amet');
+    console.log('conectando ' + this.apiUrl);
     this.getContract();
     this.getData();
+    console.log("conectado");
   }
-
   getData(){
     return this.http.get(this.apiUrl)
     .map((res: Response) => res.json())
   }
-
   getContract(){
     this.getData().subscribe(data => {
       console.log(data);
       this.data = data
     })
   }
-
   // lineChart
   public lineChartData:Array<any> = [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
-    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'},
-    {data: [18, 48, 77, 9, 100, 27, 40], label: 'Series C'}
+    {data: [], label: ''}
   ];
-  public lineChartLabels:Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+  public lineChartLabels:Array<any> = []; // legend (days/month)
   public lineChartOptions:any = {
     responsive: true
   };
