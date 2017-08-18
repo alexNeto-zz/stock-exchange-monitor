@@ -22,7 +22,6 @@ export class GraphComponent{
   selectedValue = null;
   private apiUrl = 'http://api.fixer.io/latest?base='+ (this.selectedValue !== null) ? this.selectedValue : 'USD';
 
-
   constructor(private http: Http){
     console.log('conectando ' + this.apiUrl);
     this.getContract();
