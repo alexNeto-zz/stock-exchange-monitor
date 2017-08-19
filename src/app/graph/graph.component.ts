@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { FixioService } from '../fixio.service'
 
 
 @Component({
@@ -10,22 +11,13 @@ import { FormsModule } from '@angular/forms';
 
 export class GraphComponent{
 
-  
-  stock = [];
-  function(){
-    if(this.selectedValue === 'USD'){
-      this.stock[0] = 'EUR';
-      this.stock[1] = 'GBP';
-      this.stock[2] = 'BRL';
 
-    }
-  }
 
   // lineChart
   public lineChartData:Array<any> = [
-    {data: [1,2,3,4,5,6,76,7, 1, 3], label: this.stock[0]},
-    {data: [1,2,3,4,5,6,76,7, 2, 1000000], label: this.stock[1]},
-    {data: [1,2,3,4,5,6,76,7,4,5], label: this.stock[2]}
+    {data: [1,2,3,4,5,6,76,7, 1, 3], label: 'this.stock[0]'},
+    {data: [1,2,3,4,5,6,76,7, 2, 1000000], label: 'this.stock[1]'},
+    {data: [1,2,3,4,5,6,76,7,4,5], label: 'this.stock[2]'}
   ];
   public lineChartLabels:Array<any> = ['1/1','1/2','1/3','1/4','1/5','1/6','1/7','1/8','1/9','1/10']; // legend (days/month)
   public lineChartOptions:any = {
