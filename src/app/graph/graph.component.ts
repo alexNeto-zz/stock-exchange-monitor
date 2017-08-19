@@ -11,6 +11,40 @@ import { FixioService } from '../fixio.service'
 
 export class GraphComponent{
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+  data: any = {};
+  base = [
+   {id: "EUR", name: "Euro"},
+   {id: "USD", name: "US Dollar"},
+   {id: "BRL", name: "Brazil Real"},
+   {id: "GBP", name: "Great Britain Pound"}
+  ];
+  selectedValue = null;
+  private apiUrl = 'http://api.fixer.io/latest?base='+ (this.selectedValue !== null) ? this.selectedValue : 'USD';
+
+  constructor(private http: Http){
+    console.log('conectando ' + this.apiUrl);
+    this.getContract();
+    this.getData();
+    console.log("conectado");
+  }
+  getData(){
+    return this.http.get(this.apiUrl)
+    .map((res: Response) => res.json())
+  }
+  getContract(){
+    this.getData().subscribe(data => {
+      console.log(data);
+      this.data = data
+    })
+  }
+=======
+
+
+>>>>>>> working
+>>>>>>> 674f3ea42bfae1a437cdd78727c78209dc891d45
   // lineChart
   public lineChartData:Array<any> = [
     {data: [1,2,3,4,5,6,76,7, 1, 3], label: 'this.stock[0]'},
