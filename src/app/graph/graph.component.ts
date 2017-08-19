@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Http, Response } from '@angular/http';
-import 'rxjs/add/operator/map';
 import { FormsModule } from '@angular/forms';
+import { FixioService } from '../fixio.service'
 
 
 @Component({
@@ -12,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 
 export class GraphComponent{
 
+<<<<<<< HEAD
   data: any = {};
   base = [
    {id: "EUR", name: "Euro"},
@@ -38,11 +38,17 @@ export class GraphComponent{
       this.data = data
     })
   }
+=======
+
+
+>>>>>>> working
   // lineChart
   public lineChartData:Array<any> = [
-    {data: [], label: ''}
+    {data: [1,2,3,4,5,6,76,7, 1, 3], label: 'this.stock[0]'},
+    {data: [1,2,3,4,5,6,76,7, 2, 1000000], label: 'this.stock[1]'},
+    {data: [1,2,3,4,5,6,76,7,4,5], label: 'this.stock[2]'}
   ];
-  public lineChartLabels:Array<any> = []; // legend (days/month)
+  public lineChartLabels:Array<any> = ['1/1','1/2','1/3','1/4','1/5','1/6','1/7','1/8','1/9','1/10']; // legend (days/month)
   public lineChartOptions:any = {
     responsive: true
   };
