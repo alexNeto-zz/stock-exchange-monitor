@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Http, Response } from '@angular/http';
-import 'rxjs/add/operator/map';
 import { FormsModule } from '@angular/forms';
 
 
@@ -12,43 +10,24 @@ import { FormsModule } from '@angular/forms';
 
 export class GraphComponent{
 
-  data: any = {};
-  base = [
-   {id: "EUR", name: "Euro"},
-   {id: "USD", name: "US Dollar"},
-   {id: "BRL", name: "Brazil Real"},
-   {id: "GBP", name: "Great Britain Pound"}
-  ];
-  selectedValue = 'USD';
-  date = new Date();
-  day = (this.date.getDate() < 10) ? '0' + this.date.getDate() : this.date.getDate();
-  month = (this.date.getMonth() < 10) ? '0' + (this.date.getMonth() + 1) : (this.date.getMonth() + 1);
-  // https://api.fixer.io/2017-08-09?base=USD
-  private apiUrl = 'https://api.fixer.io/' + this.date.getFullYear() + '-' + this.month + '-' + this.day + '?base=' + this.selectedValue;
-  changeBase(selectedValue){
-    this.apiUrl = 'https://api.fixer.io/' + this.date.getFullYear() + '-' + this.month + '-' + this.day + '?base=' + this.selectedValue;
+  
+  stock = [];
+  function(){
+    if(this.selectedValue === 'USD'){
+      this.stock[0] = 'EUR';
+      this.stock[1] = 'GBP';
+      this.stock[2] = 'BRL';
+
+    }
   }
-  constructor(private http: Http){
-    console.log('conectando ' + this.apiUrl);
-    this.getContract();
-    this.getData();
-    console.log("conectado");
-  }
-  getData(){
-    return this.http.get(this.apiUrl)
-    .map((res: Response) => res.json())
-  }
-  getContract(){
-    this.getData().subscribe(data => {
-      console.log(data);
-      this.data = data
-    })
-  }
+
   // lineChart
   public lineChartData:Array<any> = [
-    {data: [], label: ''}
+    {data: [1,2,3,4,5,6,76,7, 1, 3], label: this.stock[0]},
+    {data: [1,2,3,4,5,6,76,7, 2, 1000000], label: this.stock[1]},
+    {data: [1,2,3,4,5,6,76,7,4,5], label: this.stock[2]}
   ];
-  public lineChartLabels:Array<any> = []; // legend (days/month)
+  public lineChartLabels:Array<any> = ['1/1','1/2','1/3','1/4','1/5','1/6','1/7','1/8','1/9','1/10']; // legend (days/month)
   public lineChartOptions:any = {
     responsive: true
   };
