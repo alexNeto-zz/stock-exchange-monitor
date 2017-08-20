@@ -11,6 +11,7 @@ export class ConverterComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }
